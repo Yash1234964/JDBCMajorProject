@@ -1,6 +1,8 @@
 package dtoDemo;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable{
 
 	
 	Integer sid;
