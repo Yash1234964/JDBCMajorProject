@@ -3,6 +3,7 @@ package persistanceDemo;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dtoDemo.Student;
@@ -11,7 +12,7 @@ public class StudentDaoImpl implements IStudentDao {
 
 	Connection connection=null;
 	PreparedStatement pstmt=null;
-	
+	ResultSet rs=null;
 	
 	@Override
 	public String addStudent(String sName, Integer sAge, String sAddress) {
@@ -46,8 +47,41 @@ public class StudentDaoImpl implements IStudentDao {
 
 	@Override
 	public Student searchStudent(Integer sid) {
-		// TODO Auto-generated method stub
-		return null;
+		
+String sqlSearchQuery="select sid,sname,sage,saddress from student where sid=?";
+Student student=null;
+		try {
+			connection=JDBCUtil.JdbcUtil.getJdbcConnection();
+			
+			if(connection!=null) {
+				pstmt =connection.prepareStatement(sqlSearchQuery);
+				
+			}
+			if(pstmt !=null) {
+				pstmt.setInt(1, sid);
+				rs=pstmt.executeQuery();
+			}
+		   
+			
+			
+			if(rs!=null) {
+				
+				if(rs.next()) {
+				student=new Student();
+				student.setSid(rs.getInt(1));
+				student.setsName(rs.getString(2));
+				student.setsAge(rs.getInt(3));
+				student.setsAddress(rs.getString(4));
+				
+			}
+			}
+			return student;
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return student;
 	}
 
 	@Override

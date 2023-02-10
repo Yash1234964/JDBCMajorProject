@@ -15,7 +15,7 @@ public class testApp {
 		 
 		 if(std!=null) {
 			System.out.println(std);
-			System.out.println(std.getSid()+"\t"+std.getsName()+"\t"+std.getsAge()+std.getsAddress());
+			System.out.println(std.getSid()+"\t"+std.getsName()+"\t"+std.getsAge()+"\t"+std.getsAddress());
 		 }
 		 else {
 			 System.out.println("Record not found");
