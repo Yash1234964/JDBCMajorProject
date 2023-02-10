@@ -12,7 +12,10 @@ public class StudentServiceImpl implements IstudentService {
 		// TODO Auto-generated method stub
 		
 		stdService = StudentServiceFactory.getStudentService();
+		if(stdService !=null)
 		return stdService.addStudent(sName, sAge, sAddress);
+		
+		return "failure";
 	}
 
 	@Override
