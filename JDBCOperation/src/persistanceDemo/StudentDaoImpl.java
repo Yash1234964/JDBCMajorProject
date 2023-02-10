@@ -17,7 +17,7 @@ public class StudentDaoImpl implements IStudentDao {
 	public String addStudent(String sName, Integer sAge, String sAddress) {
 		// TODO Auto-generated method stub
 		
-		String sqlInsertQuery="insert into student (sage,sname,saddress) values (?,?,?)";
+		String sqlInsertQuery="insert into student (sname,sage,saddress) values (?,?,?)";
 		
 		try {
 			connection=JDBCUtil.JdbcUtil.getJdbcConnection();

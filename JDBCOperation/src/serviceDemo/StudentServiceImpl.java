@@ -1,19 +1,21 @@
 package serviceDemo;
 
+import daoFactoryDemo.StudentDaoFactory;
 import dtoDemo.Student;
+import persistanceDemo.IStudentDao;
 import serviceFactoryDemo.StudentServiceFactory;
 
 public class StudentServiceImpl implements IstudentService {
 
-	 IstudentService stdService;
+	 private IStudentDao stdDao;
 	
 	@Override
 	public String addStudent(String sName, Integer sAge, String sAddress) {
 		// TODO Auto-generated method stub
 		
-		stdService = StudentServiceFactory.getStudentService();
-		if(stdService !=null)
-		return stdService.addStudent(sName, sAge, sAddress);
+		stdDao = StudentDaoFactory.getStudentdao();
+		if(stdDao !=null)
+		return stdDao.addStudent(sName, sAge, sAddress);
 		
 		return "failure";
 	}
