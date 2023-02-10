@@ -10,7 +10,9 @@ public class StudentServiceImpl implements IstudentService {
 	@Override
 	public String addStudent(String sName, Integer sAge, String sAddress) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		stdService = StudentServiceFactory.getStudentService();
+		return stdService.addStudent(sName, sAge, sAddress);
 	}
 
 	@Override
