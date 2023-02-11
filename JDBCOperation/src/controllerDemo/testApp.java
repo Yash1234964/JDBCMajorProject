@@ -10,9 +10,31 @@ public class testApp {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		      updateOperation();
 			}
         
+	public static void updateOperation(){
+		 IstudentService studentService =StudentServiceFactory.getStudentService();
+		 Scanner sc=new Scanner(System.in);
+		 System.out.println("Enter sid");
+		 int sid=sc.nextInt();
+		 System.out.println("Enter name");
+		 String name=sc.next();
+		 System.out.println("Enter age");
+		 int age=sc.nextInt();
+		 System.out.println("Enter address");
+		 String address=sc.next();
+		 
+	     String msg=studentService.updateStudent(sid,name,age,address);
+	     
+	     if(msg.equals("success"))
+	     	System.out.println("Updation Successful");
+	     else if(msg.equalsIgnoreCase("not present"))
+	    	 System.out.println("Student not present");
+	     else {
+	     System.out.println("Registration Failed");
+	     }
+	}
 	public static void deleteOperation() {
 		IstudentService studentService =StudentServiceFactory.getStudentService();
 		Scanner sc = new Scanner(System.in);
@@ -50,9 +72,9 @@ public class testApp {
 	 Scanner sc=new Scanner(System.in);
 	 System.out.println("Enter name");
 	 String name=sc.next();
-	 System.out.println("Enter name");
+	 System.out.println("Enter age");
 	 int age=sc.nextInt();
-	 System.out.println("Enter name");
+	 System.out.println("Enter address");
 	 String address=sc.next();
 	 
      String msg=studentService.addStudent(name,age,address);

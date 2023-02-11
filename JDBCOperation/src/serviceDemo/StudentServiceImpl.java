@@ -30,7 +30,8 @@ public class StudentServiceImpl implements IstudentService {
 	@Override
 	public String updateStudent(Integer sid, String sName, Integer sAge, String aAddress) {
 		// TODO Auto-generated method stub
-		return null;
+		stdDao=StudentDaoFactory.getStudentdao();
+		return stdDao.updateStudent(sid, sName, sAge, aAddress);
 	}
 
 	@Override

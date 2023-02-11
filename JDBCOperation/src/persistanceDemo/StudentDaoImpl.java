@@ -85,9 +85,36 @@ Student student=null;
 	}
 
 	@Override
-	public String updateStudent(Integer sid, String sName, Integer sAge, String aAddress) {
-		// TODO Auto-generated method stub
-		return null;
+	public String updateStudent(Integer sid, String sName, Integer sAge, String sAddress) {
+String sqlUpdateQuery="update student set sname=? ,sage=?,saddress=? where sid=?";
+		
+		try {
+			connection=JDBCUtil.JdbcUtil.getJdbcConnection();
+			
+			if(connection!=null) {
+				pstmt =connection.prepareStatement(sqlUpdateQuery);
+				
+			}
+			if(pstmt !=null) {
+				pstmt.setString(1,sName);
+				pstmt.setInt(2, sAge);
+				pstmt.setString(3, sAddress);
+				pstmt.setInt(4, sid);
+				
+			}
+			int rowAffected=pstmt.executeUpdate();
+			if(rowAffected==1) {
+				return "success";
+			}
+			else {
+				return "not found";
+			}
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "failed";
 	}
 
 	@Override
