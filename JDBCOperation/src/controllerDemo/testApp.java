@@ -10,6 +10,10 @@ public class testApp {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+			}
+        
+	public static void deleteOperation() {
 		IstudentService studentService =StudentServiceFactory.getStudentService();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter id ");
@@ -21,9 +25,8 @@ public class testApp {
 			 System.out.println("Record not available");
 		     else {
 		     System.out.println("Deletion Failed");
-		        
-			}
-        }
+		     }
+	}
 	
 	public static void selectOperation() {
 		IstudentService studentService =StudentServiceFactory.getStudentService();
