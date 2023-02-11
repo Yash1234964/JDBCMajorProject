@@ -92,8 +92,30 @@ Student student=null;
 
 	@Override
 	public String deleteStudent(Integer sid) {
-		// TODO Auto-generated method stub
-		return null;
+String sqlDeleteQuery="delete from student where sid=?";
+		
+		try {
+			connection=JDBCUtil.JdbcUtil.getJdbcConnection();
+			
+			if(connection!=null) {
+				pstmt =connection.prepareStatement(sqlDeleteQuery);
+				
+			}
+			if(pstmt !=null) {
+				pstmt.setInt(1,sid);
+				
+				
+			}
+			int rowAffected=pstmt.executeUpdate();
+			if(rowAffected==1) {
+				return "success";
+			}else return "not found";
+			
+		} catch (SQLException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "failed";
 	}
 
 }

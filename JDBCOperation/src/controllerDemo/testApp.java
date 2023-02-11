@@ -12,6 +12,7 @@ public class testApp {
 		// TODO Auto-generated method stub
 		IstudentService studentService =StudentServiceFactory.getStudentService();
 		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter id ");
 		int sid=sc.nextInt();
 		String msg=studentService.deleteStudent(sid);
 		 if(msg.equals("success"))
